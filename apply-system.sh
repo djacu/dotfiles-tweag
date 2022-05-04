@@ -1,4 +1,4 @@
 #!/bin/sh
 pushd ~/dotfiles
-sudo nixos-rebuild switch --flake .# -vv
+sudo nixos-rebuild switch --flake .#
 popd
