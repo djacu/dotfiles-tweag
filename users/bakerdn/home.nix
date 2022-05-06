@@ -46,6 +46,9 @@
     git-crypt
     gnupg
     pinentry_qt
+
+    #browsers
+    firefox-wayland
   ];
 
   programs.kitty = {
