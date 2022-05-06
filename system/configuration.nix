@@ -110,7 +110,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -124,7 +124,29 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  # system.stateVersion = "21.11"; # Did you read the comment?
 
+    fonts.enableGhostscriptFonts = true;
+    fonts.fontDir.enable = true;
+    fonts.fontconfig.antialias = true;
+    fonts.fontconfig.defaultFonts.monospace = [ "Fire Code Light" ];
+    fonts.fontconfig.defaultFonts.sansSerif = [ "Source Sans Pro" ];
+    fonts.fontconfig.defaultFonts.serif = [ "Source Serif Pro" ];
+    fonts.fontconfig.enable = true;
+    fonts.fonts = with pkgs; [
+      # used for terminal
+      fira-code
+      fira-code-symbols
+
+      # GTK / other UI
+      source-sans-pro
+      source-serif-pro
+
+      # Fonts use for icons in i3 and powerlevel10k
+      nerdfonts
+
+      # Fonts use for icons in i3status-rs
+      #font-awesome_5
+    ];
 }
 

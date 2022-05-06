@@ -23,14 +23,14 @@
     wrapperFeatures.gtk = true;
     config = {
       modifier = "Mod4";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.kitty}/bin/kitty";
       bars = [{ command = "${config.programs.waybar.package}/bin/waybar"; }];
       output = {
         # Framework Laptop screen
-        "Unknown 0x095F 0x00000000" = {
-          mode = "2256x1504@60Hz";
-          scale = "1.35";
-        };
+#        "Unknown 0x095F 0x00000000" = {
+#          mode = "2256x1504@60Hz";
+#          scale = "1.35";
+#        };
       };
     };
   };
@@ -40,9 +40,7 @@
     swayidle
     wl-clipboard
     mako # notification daemon
-    alacritty # terminal 
     wofi # launcher/menu program
-    waybar # status bar
     # git tools
     git
     git-crypt
@@ -50,13 +48,23 @@
     pinentry_qt
   ];
 
-  programs.alacritty = {
+  programs.kitty = {
     enable = true;
-    settings = {
-      background_opacity = 0.8;
-      font.normal.family = "monospace";
-      font.size = 11;
-    };
+    settings.open_url_with = "firefox";
+    settings.copy_on_select = "clipboard";
+    settings.tab_bar_edge = "top";
+    settings.enable_audio_bell = "no";
+    #settings.font_family = "Fire Code Light";
+    #settings.italic_font = "Fire Code Light";
+    #settings.bold_font = "Fire Code Light";
+    #settings.bold_italic_font = "Fire Code Light";
+    #settings.font_size = 11.0;
+
+    font.name = "Fire Code Light";
+    font.size = 11;
+
+    # TODO:
+    #theme
   };
 
   programs.vim = {
@@ -102,5 +110,5 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  # home.stateVersion = "21.11";
 }
