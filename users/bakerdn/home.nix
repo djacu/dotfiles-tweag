@@ -18,22 +18,10 @@
     pinentryFlavor = "qt";
   };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    config = {
-      modifier = "Mod4";
-      terminal = "${pkgs.kitty}/bin/kitty";
-      bars = [{ command = "${config.programs.waybar.package}/bin/waybar"; }];
-      output = {
-        # Framework Laptop screen
-#        "Unknown 0x095F 0x00000000" = {
-#          mode = "2256x1504@60Hz";
-#          scale = "1.35";
-#        };
-      };
-    };
-  };
+  imports = [
+    ./sway.nix
+  ];
+
 
   home.packages = with pkgs; [
     swaylock
