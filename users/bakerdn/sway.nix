@@ -7,6 +7,12 @@
   wayland.windowManager.sway.config.terminal = "${pkgs.kitty}/bin/kitty";
   wayland.windowManager.sway.config.bars = [{ command = "${config.programs.waybar.package}/bin/waybar"; }];
 
+  # gaps
+  wayland.windowManager.sway.config.gaps.smartBorders = "on";
+  wayland.windowManager.sway.config.gaps.smartGaps = true;
+  wayland.windowManager.sway.config.gaps.inner = 12;
+  wayland.windowManager.sway.config.gaps.outer = 4;
+
   wayland.windowManager.sway.config.keybindings =
   let
     mod = config.wayland.windowManager.sway.config.modifier;
@@ -14,5 +20,7 @@
   lib.mkOptionDefault
   {
     "${mod}+d" = "exec wofi --show drun";
+    "${mod}+y" = "border toggle";
+    "${mod}+Tab" = "workspace back_and_forth";
   };
 }
