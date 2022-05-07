@@ -20,6 +20,7 @@
 
   imports = [
     ./sway.nix
+    ./kitty.nix
   ];
 
 
@@ -38,25 +39,6 @@
     #browsers
     firefox-wayland
   ];
-
-  programs.kitty = {
-    enable = true;
-    settings.open_url_with = "firefox";
-    settings.copy_on_select = "clipboard";
-    settings.tab_bar_edge = "top";
-    settings.enable_audio_bell = "no";
-    #settings.font_family = "Fire Code Light";
-    #settings.italic_font = "Fire Code Light";
-    #settings.bold_font = "Fire Code Light";
-    #settings.bold_italic_font = "Fire Code Light";
-    #settings.font_size = 11.0;
-
-    font.name = "Fire Code Light";
-    font.size = 11;
-
-    # TODO:
-    #theme
-  };
 
   programs.vim = {
     enable = true;
