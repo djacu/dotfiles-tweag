@@ -9,7 +9,7 @@
 
   # gaps
   wayland.windowManager.sway.config.gaps.smartBorders = "on";
-  wayland.windowManager.sway.config.gaps.smartGaps = true;
+  wayland.windowManager.sway.config.gaps.smartGaps = false;
   wayland.windowManager.sway.config.gaps.inner = 12;
   wayland.windowManager.sway.config.gaps.outer = 4;
 
