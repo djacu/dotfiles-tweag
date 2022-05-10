@@ -3,7 +3,7 @@
 {
   programs.waybar.enable = true;
   programs.waybar.settings = {
-    waybar = {
+    mainBar = {
       layer = "top";
       position = "top";
       height = 40;
@@ -11,6 +11,9 @@
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "sway/window" ];
       modules-right = [ "tray" "network" "memory" "cpu" "battery" "clock" ];
+
+      "sway/window".format = "{}";
+      "sway/window".max-length = 50;
 
       network.format-wifi = "WiFi ({signalStrength}%) {icon}";
       network.format-ethernet = "Ethernet {icon}";
