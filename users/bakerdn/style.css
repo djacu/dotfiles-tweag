@@ -1,0 +1,112 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Fire Code Light";
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#waybar > .horizontal {
+    padding: 10px 10px 0;
+}
+
+#waybar > .horizontal > .horizontal:nth-child(1) {
+    margin-right: 10px;
+}
+
+#workspaces button {
+	  margin: 10px 0 0 10px;
+	  font-size: 16px;
+	  padding: 7px 10px;
+	  border-radius: 5px;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#mode {
+	  margin: 10px 0 0 10px;
+	  padding: 0 10px;
+	  border-radius: 5px;
+}
+
+
+#window {
+    font-weight: 600;
+    margin: 10px 0 0 10px;
+}
+
+
+#tray,
+#network,
+#memory,
+#cpu,
+#battery,
+#clock {
+    margin: 10px 10px 0 0;
+    padding: 7px 15px;
+    border-radius: 5px;
+}
+
+/* Colors */
+/* Base */
+#workspaces button,
+#mode,
+#tray,
+#network,
+#memory,
+#cpu,
+#battery,
+#clock {
+    background: rgba(229, 231, 235, 0.9);
+    color: #374151;
+}
+
+/* Effects */
+#workspaces button:hover {
+    background: rgba(229, 231, 235, 0.4);
+}
+#workspaces button.focused {
+    background: #D1D4DB;
+    color: #1F2937;
+}
+
+/* Disabled */
+#network.disconnected {
+    background: rgba(229, 231, 235, 0.5);
+    color: #9CA3Af;
+}
+
+/* Green */
+#battery.charging {
+    background: rgba(167, 243, 208, 0.6);
+    color: #064E3B;
+}
+
+/* Urgent */
+#workspaces button.urgent,
+#battery.critical:not(.charging) {
+    background: rgba(254, 202, 202, 0.9);
+    color: #7F1D1D;
+}
+
+/* Tooltip */
+tooltip {
+    background: rgba(229, 231, 235, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+}
+
+tooltip * {
+    color: #374151;
+}
+

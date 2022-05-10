@@ -21,6 +21,7 @@
   imports = [
     ./sway.nix
     ./kitty.nix
+    ./waybar.nix
   ];
 
 
