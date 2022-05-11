@@ -1,4 +1,4 @@
-{ ... }:
+{ config, nix-colors, ... }:
 
 {
   programs.waybar.enable = true;
@@ -40,5 +40,11 @@
       battery.states.critical = 15;
     };
   };
-  programs.waybar.style = ./style.css;
+  programs.waybar.style =
+    let
+      baseNames = builtins.attrNames config.colorscheme.colors;
+      baseValues = builtins.attrValues config.colorscheme.colors;
+      style = builtins.readFile ./style.css;
+    in
+      builtins.replaceStrings baseNames baseValues style;
 }

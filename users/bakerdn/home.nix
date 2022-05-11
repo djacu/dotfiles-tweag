@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -22,8 +22,10 @@
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
+    nix-colors.homeManagerModule
   ];
 
+  colorscheme = nix-colors.colorSchemes.nord;
 
   home.packages = with pkgs; [
     swaylock

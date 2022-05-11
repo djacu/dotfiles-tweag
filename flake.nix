@@ -9,13 +9,17 @@
     
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = 
-    { self, 
+    {
+      self,
       nixpkgs, 
       nixpkgs-wayland,
-      home-manager 
+      home-manager,
+      nix-colors
     }:
     let
       system = "x86_64-linux";
@@ -39,6 +43,8 @@
         tweag-laptop = lib.nixosSystem {
           inherit system;
 
+          specialArgs = { inherit nix-colors; };
+
           modules = [
             home-manager.nixosModules.home-manager
             (import ./system/configuration.nix)
@@ -54,6 +60,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit nix-colors;
+              };
             })
           ];
 
