@@ -59,6 +59,22 @@ let
       throw "Character ${hex} is not a hexadecimal value.";
 in
 rec {
+  /* Converts from hexadecimal to decimal.
+
+     Type: hexToDec :: string -> int
+
+     Args:
+       hex: A hexadecimal string.
+
+     Example:
+       hexadecimal "12"
+       => 18
+       hexadecimal "FF"
+       => 255
+       hexadecimal "abcdef"
+       => 11259375
+
+  */
   hexToDec = hex:
   let
     decimals = builtins.map hexCharToDec (lib.stringToCharacters hex);
@@ -67,6 +83,22 @@ rec {
   in
     lib.foldl builtins.add 0 decimalsPowered;
 
+  /* Converts a 6 character hexadecimal string to RGB values.
+
+     Type: hexToRGB :: string => [int]
+
+     Args:
+       hex: A hexadecimal string of length 6.
+
+     Example:
+       hexToRGB "012345"
+       => [ 1 35 69 ]
+       hexToRGB "abcdef"
+       => [171 205 239 ]
+       hexToRGB "000FFF"
+       => [ 0 15 255 ]
+
+  */
   hexToRGB = hex:
   let
     rgbStartIndex = [0 2 4];
