@@ -129,7 +129,7 @@
     fonts.enableGhostscriptFonts = true;
     fonts.fontDir.enable = true;
     fonts.fontconfig.antialias = true;
-    fonts.fontconfig.defaultFonts.monospace = [ "Fire Code Light" ];
+    fonts.fontconfig.defaultFonts.monospace = [ "Fira Code Light" ];
     fonts.fontconfig.defaultFonts.sansSerif = [ "Source Sans Pro" ];
     fonts.fontconfig.defaultFonts.serif = [ "Source Serif Pro" ];
     fonts.fontconfig.enable = true;
@@ -146,7 +146,7 @@
       nerdfonts
 
       # Fonts use for icons in i3status-rs
-      #font-awesome_5
+      #font-awesome
     ];
 }
 

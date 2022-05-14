@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Fire Code Light";
-    font-size: 13px;
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
 }
 
 window#waybar {
@@ -111,6 +111,7 @@ tooltip {
     background: rgba(229, 231, 235, 0.9);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
+    text-shadow: none;
 }
 
 tooltip * {
