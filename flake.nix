@@ -10,6 +10,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -19,6 +21,7 @@
       nixpkgs, 
       nixpkgs-wayland,
       home-manager,
+      neovim-nightly-overlay,
       nix-colors
     }:
     let
@@ -26,6 +29,7 @@
 
       overlays = [
         nixpkgs-wayland.overlay
+        neovim-nightly-overlay.overlay
       ];
 
       pkgs = import nixpkgs {
