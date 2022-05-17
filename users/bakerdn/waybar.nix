@@ -1,4 +1,4 @@
-{ config, nix-colors, ... }:
+{ lib, config, nix-colors, my-colors, ... }:
 
 {
   programs.waybar.enable = true;
@@ -42,9 +42,11 @@
   };
   programs.waybar.style =
     let
-      baseNames = builtins.attrNames config.colorscheme.colors;
-      baseValues = builtins.attrValues config.colorscheme.colors;
-      style = builtins.readFile ./style.css;
+      inherit (builtins) attrNames attrValues map readFile replaceStrings toString;
+      baseNames = attrNames config.colorscheme.colors;
+      baseValues = attrValues config.colorscheme.colors;
+      baseRGB = map (my-colors.hexToRGBString ", ") baseValues;
+      style = readFile ./style.css;
     in
-      builtins.replaceStrings baseNames baseValues style;
+      replaceStrings baseNames baseRGB style;
 }

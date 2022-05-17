@@ -72,49 +72,47 @@ label#window, /* For the sway/window module. */
 #cpu,
 #battery,
 #clock {
-    background: rgba(229, 231, 235, 0.9);
-    color: #base01;
+    background: rgba(base05, 0.9);
+    color: rgba(base01, 1.0);
 }
 
 /* Effects */
 #workspaces button:hover {
-    background: rgba(229, 231, 235, 0.4);
+    background: rgba(base05, 0.4);
 }
 #workspaces button.focused {
-    background: #base04;
-    color: #1F2937;
+    background: rgba(base04, 1.0);
+    color: rgba(base00, 1.0);
 }
 
 /* Disabled */
 #network.disconnected {
-    background: rgba(229, 231, 235, 0.5);
-    color: #base06;
+    background: rgba(base05, 0.5);
+    color: rgba(base06, 1.0);
 }
 
 /* Green */
 #battery.charging {
-    /* background: rgba(167, 243, 208, 0.6); */
-    background: #base0B;
-    color: #base00;
-    /* opacity: 0.6; */
+    background: rgba(base0B, 0.6);
+    color: rgba(base00, 1.0);
 }
 
 /* Urgent */
 #workspaces button.urgent,
 #battery.critical:not(.charging) {
-    background: rgba(254, 202, 202, 0.9);
-    color: #base08;
+    background: rgba(base08, 0.9);
+    color: rgba(base08, 1.0);
 }
 
 /* Tooltip */
 tooltip {
-    background: rgba(229, 231, 235, 0.9);
+    background: rgba(base05, 0.9);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
     text-shadow: none;
 }
 
 tooltip * {
-    color: #374151;
+    color: rgba(base01, 1.0);
 }
 
