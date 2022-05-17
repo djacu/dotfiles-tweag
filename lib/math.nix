@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib }:
 
 rec {
   /* Base raised to the power of the exponent.

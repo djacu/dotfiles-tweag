@@ -1,4 +1,7 @@
-{ lib, math, ... }:
+{
+  lib,
+  math ? import ./math.nix { inherit lib; }
+}:
 
 let
   hexToDecMap = {
@@ -112,4 +115,23 @@ rec {
         ''
     else
       builtins.map hexToDec hexList;
+
+  /* Converts a 6 character hexadecimal string to an RGB string seperated by a
+     delimiter.
+
+     Type: hexToRGBString :: string -> string
+
+     Args:
+       sep: The delimiter or seperator.
+       hex: A hexadecimal string of length 6.
+
+  */
+  hexToRGBString = sep: hex:
+  let
+    inherit (builtins) map toString;
+    inherit (lib) concatStringsSep;
+    hexInRGB = hexToRGB hex;
+    hexInRGBString = map toString hexInRGB;
+  in
+    concatStringsSep sep hexInRGBString;
 }
