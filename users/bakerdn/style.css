@@ -93,7 +93,13 @@ label#window, /* For the sway/window module. */
 
 /* Green */
 #battery.charging {
-    background: rgba(base0B, 0.6);
+    background: rgba(base0B, 0.9);
+    color: rgba(base00, 1.0);
+}
+
+/* Warning */
+#battery.warning:not(.charging) {
+    background: rgba(base09, 0.9);
     color: rgba(base00, 1.0);
 }
 
