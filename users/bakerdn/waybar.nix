@@ -38,6 +38,8 @@
       battery.format-icons = [ "" "" "" "" "" ];
       battery.states.warning = 30;
       battery.states.critical = 15;
+
+      clock.tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
     };
   };
   programs.waybar.style =
