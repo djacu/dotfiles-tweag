@@ -62,6 +62,9 @@
               '';
               nixpkgs = { inherit overlays; };
 
+              # Required since swaylock is installed via home-manager.
+              security.pam.services.swaylock = {};
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
