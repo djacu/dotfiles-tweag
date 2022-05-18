@@ -1,0 +1,124 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+window#waybar.empty #window{
+    background: rgba(0, 0, 0, 0);
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#waybar > .horizontal {
+    padding: 10px 10px 0;
+}
+
+#waybar > .horizontal > .horizontal:nth-child(1) {
+    margin-right: 10px;
+}
+
+#workspaces button {
+	  margin: 10px 0 0 10px;
+	  font-size: 16px;
+	  padding: 7px 10px;
+	  border-radius: 5px;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#mode {
+	  margin: 10px 0 0 10px;
+	  padding: 0 10px;
+	  border-radius: 5px;
+}
+
+
+#window {
+    font-weight: 600;
+    margin: 10px 0 0 10px;
+}
+
+label#window, /* For the sway/window module. */
+#tray,
+#network,
+#memory,
+#cpu,
+#battery,
+#clock {
+    margin: 10px 10px 0 0;
+    padding: 7px 15px;
+    border-radius: 5px;
+}
+
+/* Colors */
+/* Base */
+label#window, /* For the sway/window module. */
+#workspaces button,
+#mode,
+#tray,
+#network,
+#memory,
+#cpu,
+#battery,
+#clock {
+    background: rgba(base05, 0.9);
+    color: rgba(base01, 1.0);
+}
+
+/* Effects */
+#workspaces button:hover {
+    background: rgba(base05, 0.4);
+}
+#workspaces button.focused {
+    background: rgba(base04, 1.0);
+    color: rgba(base00, 1.0);
+}
+
+/* Disabled */
+#network.disconnected {
+    background: rgba(base05, 0.5);
+    color: rgba(base06, 1.0);
+}
+
+/* Green */
+#battery.charging {
+    background: rgba(base0B, 0.9);
+    color: rgba(base00, 1.0);
+}
+
+/* Warning */
+#battery.warning:not(.charging) {
+    background: rgba(base09, 0.9);
+    color: rgba(base00, 1.0);
+}
+
+/* Urgent */
+#workspaces button.urgent,
+#battery.critical:not(.charging) {
+    background: rgba(base08, 0.9);
+    color: rgba(base06, 1.0);
+}
+
+/* Tooltip */
+tooltip {
+    background: rgba(base05, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+    text-shadow: none;
+}
+
+tooltip * {
+    color: rgba(base01, 1.0);
+}
+

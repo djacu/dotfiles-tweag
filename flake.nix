@@ -9,19 +9,27 @@
     
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = 
-    { self, 
+    {
+      self,
       nixpkgs, 
       nixpkgs-wayland,
-      home-manager 
+      home-manager,
+      neovim-nightly-overlay,
+      nix-colors
     }:
     let
       system = "x86_64-linux";
 
       overlays = [
         nixpkgs-wayland.overlay
+        neovim-nightly-overlay.overlay
       ];
 
       pkgs = import nixpkgs {
@@ -33,11 +41,14 @@
 
       inherit (nixpkgs) lib;
 
+      my-colors = import ./lib/colors.nix { inherit lib; };
     in
     {
       nixosConfigurations = {
         tweag-laptop = lib.nixosSystem {
           inherit system;
+
+          specialArgs = { inherit nix-colors my-colors; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -51,9 +62,15 @@
               '';
               nixpkgs = { inherit overlays; };
 
+              # Required since swaylock is installed via home-manager.
+              security.pam.services.swaylock = {};
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit nix-colors my-colors;
+              };
             })
           ];
 

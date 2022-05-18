@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -18,25 +18,18 @@
     pinentryFlavor = "qt";
   };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    config = {
-      modifier = "Mod4";
-      terminal = "${pkgs.kitty}/bin/kitty";
-      bars = [{ command = "${config.programs.waybar.package}/bin/waybar"; }];
-      output = {
-        # Framework Laptop screen
-#        "Unknown 0x095F 0x00000000" = {
-#          mode = "2256x1504@60Hz";
-#          scale = "1.35";
-#        };
-      };
-    };
-  };
+  imports = [
+    ./sway.nix
+    ./kitty.nix
+    ./waybar.nix
+    ./neovim.nix
+    nix-colors.homeManagerModule
+  ];
+
+  colorscheme = nix-colors.colorSchemes.nord;
 
   home.packages = with pkgs; [
-    swaylock
+    swaylock-effects
     swayidle
     wl-clipboard
     mako # notification daemon
@@ -46,26 +39,10 @@
     git-crypt
     gnupg
     pinentry_qt
+
+    #browsers
+    firefox-wayland
   ];
-
-  programs.kitty = {
-    enable = true;
-    settings.open_url_with = "firefox";
-    settings.copy_on_select = "clipboard";
-    settings.tab_bar_edge = "top";
-    settings.enable_audio_bell = "no";
-    #settings.font_family = "Fire Code Light";
-    #settings.italic_font = "Fire Code Light";
-    #settings.bold_font = "Fire Code Light";
-    #settings.bold_italic_font = "Fire Code Light";
-    #settings.font_size = 11.0;
-
-    font.name = "Fire Code Light";
-    font.size = 11;
-
-    # TODO:
-    #theme
-  };
 
   programs.vim = {
     enable = true;
