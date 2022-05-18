@@ -29,7 +29,7 @@
   colorscheme = nix-colors.colorSchemes.nord;
 
   home.packages = with pkgs; [
-    swaylock
+    swaylock-effects
     swayidle
     wl-clipboard
     mako # notification daemon
