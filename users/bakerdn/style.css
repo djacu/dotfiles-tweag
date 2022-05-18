@@ -107,7 +107,7 @@ label#window, /* For the sway/window module. */
 #workspaces button.urgent,
 #battery.critical:not(.charging) {
     background: rgba(base08, 0.9);
-    color: rgba(base08, 1.0);
+    color: rgba(base06, 1.0);
 }
 
 /* Tooltip */
