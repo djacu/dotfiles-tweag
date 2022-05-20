@@ -19,6 +19,7 @@
   };
 
   imports = [
+    ./bash.nix
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
@@ -63,14 +64,6 @@
       set smarttab
       syntax on
     '';
-  };
-
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      lse = "ls -Fho";
-      lsa = "lse -A";
-    };
   };
 
   programs.git = {
