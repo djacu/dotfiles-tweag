@@ -6,7 +6,7 @@
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
-    
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -44,6 +44,8 @@
       my-colors = import ./lib/colors.nix { inherit lib; };
     in
     {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
       nixosConfigurations = {
         tweag-laptop = lib.nixosSystem {
           inherit system;
@@ -63,7 +65,7 @@
               nixpkgs = { inherit overlays; };
 
               # Required since swaylock is installed via home-manager.
-              security.pam.services.swaylock = {};
+              security.pam.services.swaylock = { };
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
