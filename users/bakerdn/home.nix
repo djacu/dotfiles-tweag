@@ -43,6 +43,13 @@
 
     #browsers
     firefox-wayland
+
+    # graphical
+    inkscape
+    image-roll
+
+    # download
+    wget
   ];
 
   programs.vim = {
