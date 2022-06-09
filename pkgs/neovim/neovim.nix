@@ -17,24 +17,30 @@
 
   /*
    Checks that a file is a regular nix file.
-   Useful for functions that map onto attrsets generated from getDir.
+   Useful for functions that map onto attrsets generated from readDir.
    */
   isRegularNixFile = path: type: type == "regular" && hasSuffix ".nix" path;
 
   /*
-   Reads a directory and filters for nix files.
+   Returns an attrset of all nix files of a given directory.
    */
-  getDir = dir: filterAttrs isRegularNixFile (readDir dir);
+  readNixFilesInDir = dir: filterAttrs isRegularNixFile (readDir dir);
 
   /*
-   Reads all the nix files in a directory and creates a list of file paths.
+   Return the contents of a directory as an list given a function that
+   reads a directory, `read`, and a directory, `dir`.
    */
-  getFiles = dir: mapAttrsToList (path: type: toString dir + "/" + path) (getDir dir);
+  getFiles = read: dir: mapAttrsToList (path: type: toString dir + "/" + path) (read dir);
+
+  /*
+   Returns a list of all nix files of a given directory.
+   */
+  getNixFiles = getFiles readNixFilesInDir;
 
   /*
    Imports all nix files from the plugins direcotry. Output is a list of plugin attrsets.
    */
-  pluginsWithConfig = map (x: import x {inherit vimPlugins;}) (getFiles ./plugins);
+  pluginsWithConfig = map (x: import x {inherit vimPlugins;}) (getNixFiles ./plugins);
 in
   (wrapNeovim neovim-unwrapped {}).override {
     # viAlias = true;
