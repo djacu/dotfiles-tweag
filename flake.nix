@@ -10,7 +10,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-flake.url = "github:neovim/neovim?dir=contrib";
+    neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
+
+    alejandra.url = "github:kamadorueda/alejandra/1.4.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -21,7 +25,8 @@
       nixpkgs, 
       nixpkgs-wayland,
       home-manager,
-      neovim-nightly-overlay,
+      neovim-flake,
+      alejandra,
       nix-colors
     }:
     let
@@ -29,7 +34,7 @@
 
       overlays = [
         nixpkgs-wayland.overlay
-        neovim-nightly-overlay.overlay
+        (import ./pkgs/neovim/overlay.nix { inherit neovim-flake; })
       ];
 
       pkgs = import nixpkgs {
@@ -44,7 +49,12 @@
       my-colors = import ./lib/colors.nix { inherit lib; };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
+      overlays.default = overlays;
+      packages.${system} = {
+        neovim-nightly = pkgs.neovim-nightly;
+      };
 
       nixosConfigurations = {
         tweag-laptop = lib.nixosSystem {
@@ -55,6 +65,14 @@
           modules = [
             home-manager.nixosModules.home-manager
             (import ./system/configuration.nix)
+
+            ({ pkgs, ... }: {
+              environment.systemPackages = with pkgs; [
+                alejandra.defaultPackage.${system}
+                neovim-nightly
+              ];
+            })
+
             ({ ... }: {
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
               nix.registry.nixpkgs.flake = nixpkgs;

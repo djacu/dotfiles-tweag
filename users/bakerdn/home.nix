@@ -23,7 +23,6 @@
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
-    ./neovim.nix
     nix-colors.homeManagerModule
   ];
 
