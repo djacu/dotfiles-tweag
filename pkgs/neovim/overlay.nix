@@ -1,0 +1,5 @@
+{neovim-flake}: final: prev: {
+  neovim-nightly = prev.callPackage ./neovim.nix {
+    neovim-unwrapped = neovim-flake.packages.${prev.system}.neovim;
+  };
+}
