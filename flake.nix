@@ -70,6 +70,7 @@
               environment.systemPackages = with pkgs; [
                 alejandra.defaultPackage.${system}
                 neovim-nightly
+		gh
               ];
             })
 
