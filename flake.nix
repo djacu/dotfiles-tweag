@@ -53,7 +53,7 @@
 
       overlays.default = overlays;
       packages.${system} = {
-        neovim-nightly = pkgs.neovim-nightly;
+        inherit (pkgs) neovim neovim-nightly;
       };
 
       nixosConfigurations = {
@@ -69,7 +69,7 @@
             ({ pkgs, ... }: {
               environment.systemPackages = with pkgs; [
                 alejandra.defaultPackage.${system}
-                neovim-nightly
+                neovim
 		gh
               ];
             })

@@ -49,6 +49,15 @@
 
     # download
     wget
+
+    # console utilities
+    bat
+    ripgrep
+    exa
+    fd
+    jq
+    neofetch
+
   ];
 
   programs.vim = {
