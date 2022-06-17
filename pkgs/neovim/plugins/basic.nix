@@ -3,6 +3,9 @@ with vimPlugins; {
   plugins = [
   ];
   viml = ''
+    " Use <Space> as the leader key
+    let mapleader=" "
+
     " Intuit the indentation of new lines when creating them
     set smartindent
 
@@ -19,5 +22,8 @@ with vimPlugins; {
 
     " Enable mouse support
     set mouse=a
+
+    " Time in milliseconds to wait for a key code sequence to complete.
+    set timeoutlen=300
   '';
 }
