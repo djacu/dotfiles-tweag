@@ -23,7 +23,6 @@
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
-    ./neovim.nix
     nix-colors.homeManagerModule
   ];
 
@@ -50,6 +49,15 @@
 
     # download
     wget
+
+    # console utilities
+    bat
+    ripgrep
+    exa
+    fd
+    jq
+    neofetch
+
   ];
 
   programs.vim = {
