@@ -3,8 +3,8 @@
 { boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "145e54cd";
   boot.zfs.devNodes = "/dev/disk/by-id";
-  # boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_17;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_17;
   swapDevices = [
     { device = "/dev/disk/by-id/nvme-SKHynix_HFS512GDE9X081N_CD13N445112003740-part4"; randomEncryption.enable = true; }
   ];
