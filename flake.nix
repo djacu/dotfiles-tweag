@@ -70,7 +70,8 @@
               environment.systemPackages = with pkgs; [
                 alejandra.defaultPackage.${system}
                 neovim
-		gh
+                gh
+                nix-doc
               ];
             })
 
