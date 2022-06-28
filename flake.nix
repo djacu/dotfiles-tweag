@@ -12,7 +12,8 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
+    nix-colors.url = "/home/bakerdn/external/nix-colors";
   };
 
   outputs = 
