@@ -81,6 +81,16 @@ with vimPlugins; {
         -- ["1"] = "which_key_ignore",  -- special label to hide it in the popup
         -- b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
       },
+      t = {
+        name = "tree",
+        f = { "<cmd>NvimTreeFindFile<cr>", "Find File" },
+        s = { "<cmd>NvimTreeFocus<cr>", "Focus" },
+        c = { "<cmd>NvimTreeCollapse<cr>", "Collapse" },
+        o = { "<cmd>NvimTreeOpen<cr>", "Open" },
+        q = { "<cmd>NvimTreeClose<cr>", "Close" },
+        t = { "<cmd>NvimTreeToggle<cr>", "Toggle" },
+        r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
+      },
     }, { prefix = "<leader>" })
   '';
 }
