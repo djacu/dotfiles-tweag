@@ -7,7 +7,7 @@
   lua51Packages,
 }: let
   inherit (lib) filterAttrs hasSuffix mapAttrsToList;
-  inherit (builtins) concatStringsSep hasAttr map readDir toString;
+  inherit (builtins) concatStringsSep elem hasAttr map readDir toString;
 
   asLua = text: ''
     lua << EOF
@@ -15,11 +15,18 @@
     EOF
   '';
 
+  blacklist = [
+    "coq.nix"
+  ];
+
   /*
    Checks that a file is a regular nix file.
    Useful for functions that map onto attrsets generated from readDir.
    */
-  isRegularNixFile = path: type: type == "regular" && hasSuffix ".nix" path;
+  isRegularNixFile = path: type:
+    (type == "regular")
+    && (hasSuffix ".nix" path)
+    && !(elem path blacklist);
 
   /*
    Returns an attrset of all nix files of a given directory.
