@@ -83,6 +83,7 @@
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Daniel Baker";
     userEmail = "daniel.baker@tweag.io";
   };
