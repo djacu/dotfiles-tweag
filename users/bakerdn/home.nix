@@ -1,6 +1,10 @@
-{ config, pkgs, nur, nix-colors, ... }:
-
 {
+  config,
+  pkgs,
+  nur,
+  nix-colors,
+  ...
+}: {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -54,10 +58,9 @@
     fd
     jq
     neofetch
-
   ];
 
-  programs.firefox = import ./firefox { inherit pkgs;};
+  programs.firefox = import ./firefox {inherit pkgs;};
 
   programs.vim = {
     enable = true;

@@ -1,14 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration-zfs.nix ./zfs.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration-zfs.nix
+    ./zfs.nix
+  ];
 
   # environment.systemPackages = with pkgs; [
   #   vim
@@ -35,7 +37,7 @@
       "networkManager"
     ];
   };
-  
+
   networking.hostName = "tweag-laptop";
   time.timeZone = "America/Los_Angeles";
 
@@ -67,9 +69,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -126,27 +125,26 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
 
-    fonts.enableGhostscriptFonts = true;
-    fonts.fontDir.enable = true;
-    fonts.fontconfig.antialias = true;
-    fonts.fontconfig.defaultFonts.monospace = [ "Fira Code Light" ];
-    fonts.fontconfig.defaultFonts.sansSerif = [ "Source Sans Pro" ];
-    fonts.fontconfig.defaultFonts.serif = [ "Source Serif Pro" ];
-    fonts.fontconfig.enable = true;
-    fonts.fonts = with pkgs; [
-      # used for terminal
-      fira-code
-      fira-code-symbols
+  fonts.enableGhostscriptFonts = true;
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.antialias = true;
+  fonts.fontconfig.defaultFonts.monospace = ["Fira Code Light"];
+  fonts.fontconfig.defaultFonts.sansSerif = ["Source Sans Pro"];
+  fonts.fontconfig.defaultFonts.serif = ["Source Serif Pro"];
+  fonts.fontconfig.enable = true;
+  fonts.fonts = with pkgs; [
+    # used for terminal
+    fira-code
+    fira-code-symbols
 
-      # GTK / other UI
-      source-sans-pro
-      source-serif-pro
+    # GTK / other UI
+    source-sans-pro
+    source-serif-pro
 
-      # Fonts use for icons in i3 and powerlevel10k
-      nerdfonts
+    # Fonts use for icons in i3 and powerlevel10k
+    nerdfonts
 
-      # Fonts use for icons in i3status-rs
-      #font-awesome
-    ];
+    # Fonts use for icons in i3status-rs
+    #font-awesome
+  ];
 }
-
