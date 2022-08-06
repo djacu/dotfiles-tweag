@@ -54,8 +54,6 @@
       };
 
       inherit (nixpkgs) lib;
-
-      my-colors = import ./lib/colors.nix { inherit lib; };
     in
     {
       # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -69,7 +67,7 @@
         tweag-laptop = lib.nixosSystem {
           inherit system;
 
-          specialArgs = { inherit nix-colors my-colors; };
+          specialArgs = { inherit nix-colors; };
 
           modules = [
             home-manager.nixosModules.home-manager
@@ -103,7 +101,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
               home-manager.extraSpecialArgs = {
-                inherit nix-colors my-colors;
+                inherit nix-colors;
               };
             })
           ];
