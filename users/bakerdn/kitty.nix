@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs.kitty.enable = true;
   programs.kitty.font.name = "Fira Code Light";
   programs.kitty.font.size = 11;

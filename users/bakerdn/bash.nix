@@ -1,27 +1,21 @@
-{ ... }:
-
-{
+{...}: {
   programs.bash.enable = true;
-  programs.bash.historyControl =
-  [
+  programs.bash.historyControl = [
     "erasedups"
     "ignoredups"
     "ignorespace"
   ];
   programs.bash.historyFileSize = 100000;
   programs.bash.historySize = 10000;
-  programs.bash.initExtra =
-  ''
+  programs.bash.initExtra = ''
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/tweag-github
   '';
-  programs.bash.shellAliases =
-  {
+  programs.bash.shellAliases = {
     lse = "ls -Fho";
     lsa = "lse -A";
   };
-  programs.bash.shellOptions =
-  [
+  programs.bash.shellOptions = [
     # Append to history file rather than replacing it.
     "histappend"
 
