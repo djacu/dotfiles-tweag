@@ -10,6 +10,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    /*
+        The Nix User Repository (NUR) is community-driven meta repository for
+     Nix packages. It provides access to user repositories that contain package
+     descriptions (Nix expressions) and allows you to install packages by
+     referencing them via attributes. In contrast to Nixpkgs, packages are
+     built from source and are not reviewed by any Nixpkgs member.
+     */
+    nur.url = "github:nix-community/NUR";
+
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -25,6 +34,7 @@
       nixpkgs, 
       nixpkgs-wayland,
       home-manager,
+      nur,
       neovim-flake,
       alejandra,
       nix-colors
@@ -35,13 +45,12 @@
       overlays = [
         nixpkgs-wayland.overlay
         (import ./pkgs/neovim/overlay.nix { inherit neovim-flake; })
+        nur.overlay  # adds nur to nixpkgs
       ];
 
       pkgs = import nixpkgs {
         inherit system overlays;
-        config = {
-          allowUnfree = true;
-        };
+        config.allowUnfree = true;
       };
 
       inherit (nixpkgs) lib;
@@ -82,7 +91,10 @@
                 trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=
                 substituters = https://cache.nixos.org/ https://nixpkgs-wayland.cachix.org/
               '';
-              nixpkgs = { inherit overlays; };
+              nixpkgs = {
+                inherit overlays;
+                config.allowUnfree = true;
+              };
 
               # Required since swaylock is installed via home-manager.
               security.pam.services.swaylock = { };
@@ -95,7 +107,6 @@
               };
             })
           ];
-
         };
       };
     };

@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, ... }:
+{ config, pkgs, nur, nix-colors, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -40,9 +40,6 @@
     gnupg
     pinentry_qt
 
-    #browsers
-    firefox-wayland
-
     # graphical
     inkscape
     image-roll
@@ -59,6 +56,8 @@
     neofetch
 
   ];
+
+  programs.firefox = import ./firefox { inherit pkgs;};
 
   programs.vim = {
     enable = true;
