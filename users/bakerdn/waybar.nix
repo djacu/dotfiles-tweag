@@ -1,4 +1,4 @@
-{ lib, config, nix-colors, my-colors, ... }:
+{ lib, config, nix-colors, ... }:
 
 {
   programs.waybar.enable = true;
@@ -47,7 +47,7 @@
       inherit (builtins) attrNames attrValues map readFile replaceStrings toString;
       baseNames = attrNames config.colorscheme.colors;
       baseValues = attrValues config.colorscheme.colors;
-      baseRGB = map (my-colors.hexToRGBString ", ") baseValues;
+      baseRGB = map (nix-colors.lib-core.conversions.hexToRGBString ", ") baseValues;
       style = readFile ./style.css;
     in
       replaceStrings baseNames baseRGB style;
