@@ -22,7 +22,7 @@
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
 
-    alejandra.url = "github:kamadorueda/alejandra/1.4.0";
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
