@@ -94,6 +94,10 @@
             # Required since swaylock is installed via home-manager.
             security.pam.services.swaylock = {};
 
+            # The previous update broke a lot of things. Possibly due to nixpkgs-wayland.
+            # https://github.com/nix-community/nixpkgs-wayland/issues/346
+            security.polkit.enable = true;
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
