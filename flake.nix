@@ -96,6 +96,10 @@
 
             # The previous update broke a lot of things. Possibly due to nixpkgs-wayland.
             # https://github.com/nix-community/nixpkgs-wayland/issues/346
+            # Nope it was because of a change in nixpkgs:
+            # https://github.com/NixOS/nixpkgs/pull/186028
+            # TODO - disable this if home-manager fixes this
+            # https://github.com/nix-community/home-manager/issues/3160
             security.polkit.enable = true;
 
             home-manager.useGlobalPkgs = true;
