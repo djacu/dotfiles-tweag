@@ -26,6 +26,13 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    flake-utils.url = "github:numtide/flake-utils";
+
+    sway-tools.url = "github:smasher164/sway-tools";
+    sway-tools.flake = true;
+    sway-tools.inputs.nixpkgs.follows = "nixpkgs";
+    sway-tools.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs = {
@@ -37,6 +44,8 @@
     neovim-flake,
     alejandra,
     nix-colors,
+    flake-utils,
+    sway-tools,
   }: let
     system = "x86_64-linux";
 
@@ -69,6 +78,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           (import ./system/configuration.nix)
+          (import ./services/pipewire.nix)
 
           ({pkgs, ...}: {
             environment.systemPackages = with pkgs; [
@@ -76,6 +86,7 @@
               neovim
               gh
               nix-doc
+              sway-tools.packages.${system}.pw-volume
             ];
           })
 

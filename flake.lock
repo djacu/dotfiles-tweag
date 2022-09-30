@@ -123,6 +123,21 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "flakeCompat": {
       "flake": false,
       "locked": {
@@ -162,7 +177,7 @@
     },
     "lib-aggregate": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
@@ -181,7 +196,7 @@
     },
     "neovim-flake": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -308,12 +323,14 @@
     "root": {
       "inputs": {
         "alejandra": "alejandra",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "neovim-flake": "neovim-flake",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "nur": "nur"
+        "nur": "nur",
+        "sway-tools": "sway-tools"
       }
     },
     "rust-analyzer-src": {
@@ -330,6 +347,29 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "sway-tools": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1658595001,
+        "narHash": "sha256-oHKxcl3BtHarC2n6RbiP1tkOe9h5lSCpaRTX1hiW6Uc=",
+        "owner": "smasher164",
+        "repo": "sway-tools",
+        "rev": "662e3f1fa8f2165cab44195c7c35aac74b703f0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "smasher164",
+        "repo": "sway-tools",
         "type": "github"
       }
     },
