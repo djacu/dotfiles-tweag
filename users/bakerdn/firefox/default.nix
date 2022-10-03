@@ -28,5 +28,6 @@
     translate-web-pages
     tree-style-tab
     ublock-origin
+    consent-o-matic
   ];
 }
