@@ -14,6 +14,7 @@
   programs.bash.shellAliases = {
     lse = "ls -Fho";
     lsa = "lse -A";
+    lock = "swaylock --clock --color 000000";
   };
   programs.bash.shellOptions = [
     # Append to history file rather than replacing it.
