@@ -94,8 +94,8 @@
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
             nix.extraOptions = ''
-              trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=
-              substituters = https://cache.nixos.org/ https://nixpkgs-wayland.cachix.org/
+              trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= tweag-monad-bayes.cachix.org-1:tmmTZ+WvtUMpYWD4LAkfSuNKqSuJyL3N8ZVm/qYtqdc= tweag-wasm.cachix.org-1:Eu5eBNIJvleiWMEzRBmH3/fzA6a604Umt4lZguKtAU4=
+              substituters = https://cache.nixos.org/ https://nixpkgs-wayland.cachix.org/ https://tweag-monad-bayes.cachix.org https://tweag-wasm.cachix.org
             '';
             nixpkgs = {
               inherit overlays;
