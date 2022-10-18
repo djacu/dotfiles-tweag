@@ -79,7 +79,7 @@
           home-manager.nixosModules.home-manager
           (import ./system/configuration.nix)
           (import ./services/pipewire.nix)
-          (import ./builders)
+          (import ./nix)
 
           ({pkgs, ...}: {
             environment.systemPackages = with pkgs; [

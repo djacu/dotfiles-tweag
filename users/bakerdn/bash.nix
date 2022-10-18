@@ -10,6 +10,7 @@
   programs.bash.initExtra = ''
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/tweag-github
+    ssh-add /root/.ssh/id-tweag-builder
   '';
   programs.bash.shellAliases = {
     lse = "ls -Fho";
