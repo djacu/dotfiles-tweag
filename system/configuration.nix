@@ -34,12 +34,13 @@
     initialPassword = "password";
     extraGroups = [
       "wheel"
-      "networkManager"
+      "networkmanager"
     ];
   };
 
   networking.hostName = "tweag-laptop";
-  time.timeZone = "America/Los_Angeles";
+  # time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Europe/Paris";
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,11 +51,12 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s20f0u3.useDHCP = true;
-  networking.interfaces.enp0s31f6.useDHCP = true;
+  # networking.useDHCP = false;
+  # networking.interfaces.enp0s20f0u3.useDHCP = true;
+  # networking.interfaces.enp0s31f6.useDHCP = true;
   # networking.interfaces.enp45s0u2u1u1.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  # networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

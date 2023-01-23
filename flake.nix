@@ -26,6 +26,13 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    flake-utils.url = "github:numtide/flake-utils";
+
+    sway-tools.url = "github:smasher164/sway-tools";
+    sway-tools.flake = true;
+    sway-tools.inputs.nixpkgs.follows = "nixpkgs";
+    sway-tools.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs = {
@@ -37,6 +44,8 @@
     neovim-flake,
     alejandra,
     nix-colors,
+    flake-utils,
+    sway-tools,
   }: let
     system = "x86_64-linux";
 
@@ -69,6 +78,8 @@
         modules = [
           home-manager.nixosModules.home-manager
           (import ./system/configuration.nix)
+          (import ./services/pipewire.nix)
+          (import ./nix)
 
           ({pkgs, ...}: {
             environment.systemPackages = with pkgs; [
@@ -76,16 +87,13 @@
               neovim
               gh
               nix-doc
+              sway-tools.packages.${system}.pw-volume
             ];
           })
 
           ({...}: {
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
-            nix.extraOptions = ''
-              trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=
-              substituters = https://cache.nixos.org/ https://nixpkgs-wayland.cachix.org/
-            '';
             nixpkgs = {
               inherit overlays;
               config.allowUnfree = true;

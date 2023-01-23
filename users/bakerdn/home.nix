@@ -58,6 +58,9 @@
     fd
     jq
     neofetch
+
+    # comms
+    slack
   ];
 
   programs.firefox = import ./firefox {inherit pkgs;};
