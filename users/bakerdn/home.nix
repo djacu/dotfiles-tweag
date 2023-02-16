@@ -4,42 +4,7 @@
   nur,
   nix-colors,
   ...
-}:let
-  # Wrap helix to provide runtime dependencies
-  helix = with pkgs;
-    symlinkJoin {
-      name = "helix";
-      paths = [pkgs.helix];
-      buildInputs = [makeWrapper];
-      postBuild = let
-        runtimeDeps =
-          [
-            # Lua
-            sumneko-lua-language-server
-            # Nickel
-            nickel
-            # Nix
-            nil
-            alejandra
-            # Python
-            python310Packages.black
-            python310Packages.python-lsp-server
-            # Toml
-            taplo
-          ]
-          # JS/TS
-          ++ (with nodePackages; [
-            vscode-langservers-extracted
-            typescript-language-server
-            typescript
-          ]);
-      in ''
-        wrapProgram $out/bin/hx \
-          --prefix PATH : ${lib.makeBinPath runtimeDeps}
-      '';
-    };
-    in
-    {
+}: {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -62,6 +27,7 @@
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
+    ./helix.nix
     nix-colors.homeManagerModule
   ];
 
@@ -101,18 +67,6 @@
     nil
     nickel
   ];
-
-  programs.helix = {
-    enable = true;
-    package = helix;
-
-    settings = {
-      theme = "nord";
-      editor = {
-        true-color = true;
-      };
-    };
-  };
 
   programs.firefox = import ./firefox {inherit pkgs;};
 
