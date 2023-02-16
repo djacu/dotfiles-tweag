@@ -1,28 +1,29 @@
-{pkgs, ...}: let
+{pkgs, lib, system, nickel, ...}: let
   # Wrap helix to provide runtime dependencies
-  helix = with pkgs;
-    symlinkJoin {
+  helix =
+    pkgs.symlinkJoin {
       name = "helix";
       paths = [pkgs.helix];
-      buildInputs = [makeWrapper];
+      buildInputs = [pkgs.makeWrapper];
       postBuild = let
         runtimeDeps =
           [
             # Lua
-            sumneko-lua-language-server
+            pkgs.sumneko-lua-language-server
             # Nickel
-            nickel
+            nickel.packages."${system}".nickel
+            nickel.packages."${system}".lsp-nls
             # Nix
-            nil
-            alejandra
+            pkgs.nil
+            pkgs.alejandra
             # Python
-            python310Packages.black
-            python310Packages.python-lsp-server
+            pkgs.python310Packages.black
+            pkgs.python310Packages.python-lsp-server
             # Toml
-            taplo
+            pkgs.taplo
           ]
           # JS/TS
-          ++ (with nodePackages; [
+          ++ (with pkgs.nodePackages; [
             vscode-langservers-extracted
             typescript-language-server
             typescript

@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nickel.url = "github:tweag/nickel";
+    nickel.inputs.nixpkgs.follows = "nixpkgs";
+
     /*
         The Nix User Repository (NUR) is community-driven meta repository for
      Nix packages. It provides access to user repositories that contain package
@@ -40,6 +43,7 @@
     nixpkgs,
     nixpkgs-wayland,
     home-manager,
+    nickel,
     nur,
     neovim-flake,
     alejandra,
@@ -73,7 +77,7 @@
       tweag-laptop = lib.nixosSystem {
         inherit system;
 
-        specialArgs = {inherit nix-colors;};
+        specialArgs = {inherit nix-colors nickel;};
 
         modules = [
           home-manager.nixosModules.home-manager
@@ -114,7 +118,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.bakerdn = import ./users/bakerdn/home.nix;
             home-manager.extraSpecialArgs = {
-              inherit nix-colors;
+              inherit nix-colors nickel system;
             };
           })
         ];
