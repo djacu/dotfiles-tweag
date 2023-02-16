@@ -27,6 +27,7 @@
     ./sway.nix
     ./kitty.nix
     ./waybar.nix
+    ./helix.nix
     nix-colors.homeManagerModule
   ];
 
@@ -61,6 +62,10 @@
 
     # comms
     slack
+
+    # editor lsp
+    nil
+    nickel
   ];
 
   programs.firefox = import ./firefox {inherit pkgs;};

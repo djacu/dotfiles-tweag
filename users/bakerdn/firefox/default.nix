@@ -1,7 +1,6 @@
 {pkgs}: {
   enable = true;
   package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-    forceWayland = true;
     extraPolicies.ExtensionSettings = {};
   };
   profiles.default = {
