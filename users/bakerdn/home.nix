@@ -71,6 +71,14 @@
 
   programs.firefox = import ./firefox {inherit pkgs;};
 
+  programs.tmux = {
+    enable = true;
+    escapeTime = 0;
+    extraConfig = ''
+      set -g default-terminal "tmux"
+    '';
+  };
+
   programs.vim = {
     enable = true;
     settings = {
