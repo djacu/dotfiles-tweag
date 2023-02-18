@@ -38,7 +38,16 @@ in {
     enable = true;
     package = helix;
 
-    settings.theme = "nord";
-    settings.editor.true-color = true;
+    settings = {
+      theme = "base16_default_dark";
+
+      editor.bufferline = "always";
+      editor.idle-timeout = 0;
+      editor.line-number = "relative";
+      editor.rulers = [80];
+      editor.true-color = true;
+
+      editor.cursor-shape.insert = "bar";
+    };
   };
 }
