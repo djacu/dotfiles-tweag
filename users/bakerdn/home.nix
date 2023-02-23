@@ -79,6 +79,13 @@
     '';
   };
 
+  programs.tmate = {
+    enable = true;
+    extraConfig = ''
+      set -g default-terminal "tmate"
+    '';
+  };
+
   programs.vim = {
     enable = true;
     settings = {
